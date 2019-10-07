@@ -12,6 +12,8 @@ mkdir -p /etc/nginx/sites-available
 mkdir -p /etc/nginx/sites-enabled
 ```
 
+if you cann't create directory, please use `sudo`.
+
 list of `nginx` directory:
 
 ``` bash
