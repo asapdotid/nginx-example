@@ -51,4 +51,4 @@ then chack again nginx config `nginx -t` if you are sure with the config then yo
 
 done!
 
-> You can add or modify vhost config then check nginx and reload nginx.
+> You can add or modify vhost config then check nginx configuration and reload nginx configuration.
