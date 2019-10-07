@@ -4,6 +4,16 @@ Remember location your `nginx` config:
 
 `/etc/nginx/`
 
+you can create directory `snippets`, `sites-available` and `sites-enabled` if not exist.
+
+``` bash
+mkdir -p /etc/nginx/snippets
+mkdir -p /etc/nginx/sites-available
+mkdir -p /etc/nginx/sites-enabled
+```
+
+list of `nginx` directory:
+
 ``` bash
 ╭─root at web-server in ~ using
 ╰─○ ll /etc/nginx
@@ -33,8 +43,10 @@ Link virtual host config from `sites-available` to `sites-enabled`
 ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/example
 ```
 
-then chack again nginx config `nginx -t` if are you sure with the config then you can reload nginx:
+then chack again nginx config `nginx -t` if you are sure with the config then you can reload nginx:
 
 > nginx -s reload
 
-You can update config, check nginx and reload nginx.
+done!
+
+> You can add or modify vhost config then check nginx and reload nginx.
