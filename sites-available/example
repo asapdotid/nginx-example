@@ -3,7 +3,7 @@ server {
 	listen [::]:80;
 
 	server_name example.com;
-	# Tidak dipakai klu untuk proxy pass
+	# no need if you use proxy pass
 	# root /var/www/example.com/public;
 
 	# security
