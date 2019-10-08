@@ -99,6 +99,17 @@ include snippets/error.conf;
 ...
 ```
 
+Or
+
+``` bash
+...
+
+# Error handling
+include /etc/nginx/snippets/error.conf;
+
+...
+```
+
 ## Custom Block direct Access IP Public
 
 > For some reason you can block user to access direct IP Public, which simple configuration.
