@@ -51,4 +51,97 @@ then chack again nginx config `nginx -t` if you are sure with the config then yo
 
 done!
 
+## Custom Error page
+
+You can custom error page with example in `snippets/error.conf`:
+
+``` bash
+error_page 404  @404;
+error_page 500 501 502 @502;
+
+# error_page 404 /404.html;
+location @404 {
+	root /var/www/error;
+	try_files /404.html =404;
+	internal;
+}
+# error_page 502 /maintenance.html;
+location @502 {
+    root /var/www/error;
+    try_files /maintenance.html =502;
+    internal;
+}
+```
+
+and
+
+> Create Html files for error handling in `/var/www/error` directory:
+
+``` bash
+mkdir -p /var/www/error
+chown -R www-data:www-data /var/www/error
+```
+
+place your custom error page to this directory, such as:
+
+- 404.html
+- maintenance.html
+- etc.
+
+then include to the default config or vhost config:
+
+``` bash
+...
+
+# Error handling
+include snippets/error.conf;
+
+...
+```
+
+## Custom Block direct Access IP Public
+
+> For some reason you can block user to access direct IP Public, which simple configuration.
+> You can permanen redirect to primary domain name or block to error handling like 404.
+> This configuration place to `nginx.conf` only one script load, better not include to the virtual host app.
+
+``` bash
+server {
+  listen 80;
+  listen [::]:80;     
+  server_name _;
+  return 301 https://domain.com$request_uri;
+}
+
+server {
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;      
+  server_name _;
+  return 301 https://domain.com$request_uri;
+}
+```
+
+or
+
+``` bash
+server {
+  listen 80;
+  listen [::]:80;     
+  server_name _;
+  include snippets/error.conf;
+  return 404;
+}
+
+server {
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;      
+  server_name _;
+  include snippets/error.conf;
+  return 404;
+}
+```
+
 > You can add or modify vhost config then check nginx configuration and reload nginx configuration.
+
+For discussion please visit the [Nginx Indonesia Telegram group](https://t.me/id_nginx).
+Or contact Telegram `@asapdotid`
