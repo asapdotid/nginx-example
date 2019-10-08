@@ -102,7 +102,7 @@ include snippets/error.conf;
 ## Custom Block direct Access IP Public
 
 > For some reason you can block user to access direct IP Public, which simple configuration.
-> You can permanen redirect to primary domain name or block to error handling like 404.
+> You can permanent redirect to primary domain name or block to error handling like 404.
 > This configuration place to `nginx.conf` only one script load, better not include to the virtual host app.
 
 ``` bash
