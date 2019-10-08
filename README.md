@@ -39,7 +39,7 @@ drwxr-xr-x. 3 root root   27 Oct 18  2018 ssl
 
 > Check nginx config `nginx -t`
 
-Link virtual host config from `sites-available` to `sites-enabled`
+Link virtual host config from `sites-available` to `sites-enabled`.
 
 ``` bash
 ln -s /etc/nginx/sites-available/example /etc/nginx/sites-enabled/example
@@ -116,7 +116,7 @@ include /etc/nginx/snippets/error.conf;
 
 > You can permanent redirect to primary domain name or block to error handling like 404.
 
-> Change IP sample `10.24.15.9` to actual your server `IP Public`
+> Change IP sample `10.24.15.9` to actual your server `IP Public`.
 
 > This configuration place to `nginx.conf` only one script load, better not include to the virtual host app.
 
@@ -151,7 +151,7 @@ server {
 }
 ```
 
-or
+Or
 
 ``` bash
 server {
@@ -190,8 +190,8 @@ server {
 > You can add or modify vhost config then check nginx configuration and reload nginx configuration.
 
 For discussion please visit the [Nginx Indonesia Telegram group](https://t.me/id_nginx).
-Or contact Telegram `@asapdotid`
+Or contact Telegram `@asapdotid`.
 
 > I use references from [Nginxconfig.IO](https://nginxconfig.io/).
 
-You can also try with a few settings for your application, good luck
+You can also try with a few settings for your application, good luck!
