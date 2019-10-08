@@ -113,8 +113,13 @@ include /etc/nginx/snippets/error.conf;
 ## Custom Block direct Access IP Public
 
 > For some reason you can block user to access direct IP Public, which simple configuration.
+
 > You can permanent redirect to primary domain name or block to error handling like 404.
+
+> Change IP sample `10.24.15.9` to actual your server `IP Public`
+
 > This configuration place to `nginx.conf` only one script load, better not include to the virtual host app.
+
 
 ``` bash
 server {
@@ -128,6 +133,20 @@ server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;      
   server_name _;
+  return 301 https://domain.com$request_uri;
+}
+
+server {
+  listen 80;
+  listen [::]:80;     
+  server_name 10.24.15.9;
+  return 301 https://domain.com$request_uri;
+}
+
+server {
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;      
+  server_name 10.24.15.9;
   return 301 https://domain.com$request_uri;
 }
 ```
@@ -147,6 +166,22 @@ server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;      
   server_name _;
+  include /etc/nginx/snippets/error.conf;
+  return 404;
+}
+
+server {
+  listen 80;
+  listen [::]:80;     
+  server_name 10.24.15.9;
+  include /etc/nginx/snippets/error.conf;
+  return 404;
+}
+
+server {
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;      
+  server_name 10.24.15.9;
   include /etc/nginx/snippets/error.conf;
   return 404;
 }
