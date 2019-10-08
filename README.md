@@ -128,7 +128,7 @@ server {
   listen 80;
   listen [::]:80;     
   server_name _;
-  include snippets/error.conf;
+  include /etc/nginx/snippets/error.conf;
   return 404;
 }
 
@@ -136,7 +136,7 @@ server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;      
   server_name _;
-  include snippets/error.conf;
+  include /etc/nginx/snippets/error.conf;
   return 404;
 }
 ```
