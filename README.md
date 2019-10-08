@@ -191,3 +191,7 @@ server {
 
 For discussion please visit the [Nginx Indonesia Telegram group](https://t.me/id_nginx).
 Or contact Telegram `@asapdotid`
+
+> I use references from [Nginxconfig.IO](https://nginxconfig.io/).
+
+You can also try with a few settings for your application, good luck
