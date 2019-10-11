@@ -1,0 +1,22 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name example-3.com;
+
+	# security
+	include snippets/security.conf;
+
+	# logging
+	access_log /var/log/nginx/example-3.com.access.log;
+	error_log /var/log/nginx/example-3.com.error.log warn;
+
+	# reverse proxy
+	location / {
+		proxy_pass http://127.0.0.1:3000;
+		include snippets/proxy.conf;
+	}
+
+	# additional config
+	include snippets/general.conf;
+}
